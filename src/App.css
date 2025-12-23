@@ -2,6 +2,10 @@
 {
   background-image: linear-gradient(to right,rgb(184, 211, 206),white,rgb(184, 211,206));} */
 /* ===== PAGE HEADING ===== */
+*
+{
+  background-color: #F1F1F1;
+}
 .heading {
   text-align: center;
   font-size: 40px;
