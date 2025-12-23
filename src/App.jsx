@@ -1,73 +1,114 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { motion } from "framer-motion";
 import word from "./assets/word.png";
-import Amazon from "./assets/amazon.png"
-// import { useNavigate } from 'react-router-dom';
-import './App.css'
+import Amazon from "./assets/amazon.png";
+import "./App.css";
+
+/* Container stagger */
+const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25, // cards fall one by one
+    },
+  },
+};
+
+/* Falling down animation */
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: -150,          // start from top
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 110,
+      damping: 14,     // bounce control
+    },
+  },
+};
 
 function App() {
-  
-// const navigate=useNavigate();
-const tools=[{name:"word_to_pdf converter" ,
-      description: (
-  <>
-        Word-to-PDF Converter is a tool that allows users to easily convert 
-        Word documents into high-quality PDF files while preserving 
-        the original formatting, layout, and content. 
-        It provides a fast, secure, and user-friendly way to generate shareable and print-ready PDFs.
-      </>),image:word,link:"https://word-to-pdf-converter-ten.vercel.app/"},
-      {name:"Amazon seller profit calculator" , description:(
-        <>
-        Amazon Seller Profit Cost Calculator is a tool that helps sellers estimate their
-         actual profit by calculating all Amazon-related costs such as product cost, Amazon fees,
-          shipping, taxes, and ads. It gives a clear breakdown of total cost, profit, and profit margin
-          before listing or selling a product.</>
-      ),
-      image:Amazon,link:"https://wheat-goose-528320.hostingersite.com/"},
-     {name:"Amazon seller profit calculator" , description:(
-        <>
-        Amazon Seller Profit Cost Calculator is a tool that helps sellers estimate their
-         actual profit by calculating all Amazon-related costs such as product cost, Amazon fees,
-          shipping, taxes, and ads. It gives a clear breakdown of total cost, profit, and profit margin
-          before listing or selling a product.</>
-      ),
-      image:Amazon,link:"https://wheat-goose-528320.hostingersite.com/"},
-    
-    {name:"AI writing tools" ,description:(
-      <>
-      AI writing tools are intelligent software solutions designed to help users create high-quality <br/>
-      written content quickly and efficiently. They use artificial intelligence and natural language<br/>
-       processing to generate, rewrite, summarize, and enhance text while maintaining clarity, tone, <br/>
-       and context. These tools are widely used for writing blogs, emails, social media posts, marketing copy,<br/>
-        and professional documents, helping individuals and businesses save time, 
-      improve productivity, and maintain consistent content quality.
-      </>
-    )}
-    ]
+  const tools = [
+    {
+      name: "Word to PDF Converter",
+      description:
+        "Convert Word documents into high-quality PDFs while preserving formatting.",
+      image: word,
+      link: "https://word-to-pdf-converter-ten.vercel.app/",
+    },
+    {
+      name: "Amazon Seller Profit Calculator",
+      description:
+        "Calculate Amazon fees, costs, profit, and margins before selling products.",
+      image: Amazon,
+      link: "https://wheat-goose-528320.hostingersite.com/",
+    },
+    {
+      name: "Amazon Seller Profit Calculator",
+      description:
+        "Calculate Amazon fees, costs, profit, and margins before selling products.",
+      image: Amazon,
+      link: "https://wheat-goose-528320.hostingersite.com/",
+    },
+    {
+      name: "AI Writing Tools",
+      description:
+        "AI Writing Tools help users generate high-quality content quickly using advanced artificial intelligence.",
+      image: null,     // 👈 no image
+      link: null,      // 👈 no link
+    },
+  ];
+
   return (
     <>
-     <h2>Tools</h2>
-     <div className='head'>
-     
-      {tools.map((item,index)=>(
-        <div key={index} className='card'   onClick={() =>
-    window.open(
-      
-      item.link,"_blank")
-  }
->
-           <img src={item.image}/>
-      <p className='title'>{item.name}</p>
-      <p className='description'>{item.description}</p>
-      
-     </div>
-     
-    ))
-  }
-  </div>
+      {/* Animated Heading */}
+      <motion.p
+        className="heading"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        Tools
+      </motion.p>
+
+      {/* Cards */}
+      <motion.div
+        className="head"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {tools.map((item, index) => (
+          <motion.div
+            key={index}
+            className="card"
+            variants={cardVariants}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => item.link && window.open(item.link, "_blank")}
+          >
+            {/* Image (only if exists) */}
+            {item.image && (
+              <div className="image-box">
+                <img src={item.image} alt={item.name} />
+              </div>
+            )}
+
+            <p className="title">{item.name}</p>
+            <p className="description">{item.description}</p>
+
+            <span className="glow"></span>
+          </motion.div>
+        ))}
+      </motion.div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

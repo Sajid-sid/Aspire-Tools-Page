@@ -1,33 +1,102 @@
-.head {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  padding: 20px;
-}
-h2{
-  color: blue;
+/* *
+{
+  background-image: linear-gradient(to right,rgb(184, 211, 206),white,rgb(184, 211,206));} */
+/* ===== PAGE HEADING ===== */
+.heading {
   text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: blue;
+  margin-bottom: 40px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.card {
-  background-color: whitesmoke;
+
+/* ===== CARD CONTAINER ===== */
+.head {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 20px;
-  border-radius: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 18px;
+  background-color:whitesmoke;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+} */
 }
 
-img {
+/* ===== IMAGE WRAPPER (IMPORTANT) ===== */
+.image-box {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 200px;                 /* fixed height for all cards */
+  background: #f4f6fb;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 16px;
 }
 
+/* ===== IMAGE ===== */
+.image-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;           /* no crop */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Hover zoom */
+.card:hover .image-box img {
+  transform: scale(1.05);
+}
+.card:hover
+{
+  box-shadow: #555;
+   transform: scale(1.05);
+}
+/* ===== TITLE ===== */
 .title {
+  font-size: 18px;
   font-weight: bold;
   color: blue;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 10px;
 }
-.description
-{
-  padding-top: 10px;
+
+/* ===== DESCRIPTION ===== */
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* ===== GLOW EFFECT ===== */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    
+    rgba(76, 168, 230, 0.5),
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .glow {
+  opacity: 1;
 }
