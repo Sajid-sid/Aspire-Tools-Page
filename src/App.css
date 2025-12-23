@@ -1,0 +1,33 @@
+.head {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px;
+}
+h2{
+  color: blue;
+  text-align: center;
+}
+.card {
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.title {
+  font-weight: bold;
+  color: blue;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+.description
+{
+  padding-top: 10px;
+}
