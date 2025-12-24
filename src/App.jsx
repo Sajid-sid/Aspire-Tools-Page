@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import word from "./assets/word2pdf.png";
 import Amazon from "./assets/Amazon1.png";
+import app from "./assets/App2.png"
+import web from "./assets/App"
 import "./App.css";
 
 /* ===== Container stagger ===== */
@@ -64,6 +66,15 @@ function App() {
       image: null,
       link: null,
     },
+    {name:"App Cost Calculator",
+      description:(<>App Cost Calculator quickly estimates the development cost of mobile and web apps based on features and complexity.
+</>),feature:"Provides instant, accurate cost estimates for app development based on features, platform, and complexity.",
+image:app},
+{name:"Website Cost Calculator",
+      description:(<>Website Cost Calculator estimates the cost of building a website based on features, design, and platform.
+It helps businesses and developers plan budgets quickly with accurate, instant results.
+</>),feature:"Instantly calculates website development costs based on features, design complexity, and platform.",
+image:web}
   ];
 
   return (
