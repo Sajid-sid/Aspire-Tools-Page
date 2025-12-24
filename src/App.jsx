@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import word from "./assets/word2pdf.png";
 import Amazon from "./assets/Amazon1.png";
-import web from "./assets/App.png";
+import web from "./assets/web.png";
 import app from "./assets/app2.png";
 import "./App.css";
 
@@ -55,15 +55,7 @@ function App() {
       image: Amazon,
       link: "https://wheat-goose-528320.hostingersite.com/",
     },
-    {
-      name: "AI Writing Tools",
-      description:
-        "Generate high-quality content instantly using AI-powered writing tools.",
-      feature:
-        "Blogs, emails, ads, and SEO content in seconds.",
-      image: null,
-      link: null,
-    },
+
        {name:"App Cost Calculator",
       description:(<>App Cost Calculator quickly estimates the development cost of mobile and web apps based on features and complexity.
 </>),feature:"Provides instant, accurate cost estimates for app development based on features, platform, and complexity.",
@@ -74,7 +66,16 @@ link:"https://project-cost-calculator-olive.vercel.app/"},
 It helps businesses and developers plan budgets quickly with accurate, instant results.
 </>),feature:"Instantly calculates website development costs based on features, design complexity, and platform.",
 image:web,
-link:"https://website-calculator-gold.vercel.app/"}
+link:"https://website-calculator-gold.vercel.app/"},
+    {
+      name: "AI Writing Tools",
+      description:
+        "Generate high-quality content instantly using AI-powered writing tools.",
+      feature:
+        "Blogs, emails, ads, and SEO content in seconds.",
+      image: web,
+      link: null,
+    },
   ];
 
   return (
