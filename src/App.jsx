@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import word from "./assets/word.png";
-import Amazon from "./assets/amazon.png";
+import word from "./assets/word2pdf.png";
+import Amazon from "./assets/Amazon1.png";
 import "./App.css";
 
 /* Container stagger */
