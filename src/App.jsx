@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import word from "./assets/word2pdf.png";
 import Amazon from "./assets/Amazon1.png";
-import app from "./assets/App2.png"
-import web from "./assets/App"
+import web from "./assets/app.png";
+import app from "./assets/app2.png";
 import "./App.css";
 
 /* ===== Container stagger ===== */
@@ -20,8 +20,8 @@ const containerVariants = {
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 50,          // cards start slightly lower
-    scale: 0.95,
+    y: 40,        // smoother than -150
+    scale: 0.96,
   },
   visible: {
     opacity: 1,
@@ -29,13 +29,11 @@ const cardVariants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 120, // a little snappier
-      damping: 18,
-      mass: 0.8,      // subtle bounce effect
+      stiffness: 90,
+      damping: 16,
     },
   },
 };
-
 
 function App() {
   const tools = [
@@ -66,15 +64,17 @@ function App() {
       image: null,
       link: null,
     },
-    {name:"App Cost Calculator",
+       {name:"App Cost Calculator",
       description:(<>App Cost Calculator quickly estimates the development cost of mobile and web apps based on features and complexity.
 </>),feature:"Provides instant, accurate cost estimates for app development based on features, platform, and complexity.",
-image:app},
-{name:"Website Cost Calculator",
+image:app,
+link:"https://project-cost-calculator-olive.vercel.app/"},
+   {name:"Website Cost Calculator",
       description:(<>Website Cost Calculator estimates the cost of building a website based on features, design, and platform.
 It helps businesses and developers plan budgets quickly with accurate, instant results.
 </>),feature:"Instantly calculates website development costs based on features, design complexity, and platform.",
-image:web}
+image:web,
+link:"https://website-calculator-gold.vercel.app/"}
   ];
 
   return (
@@ -85,7 +85,7 @@ image:web}
   initial={{ clipPath: "inset(0 100% 0 0)" }}
   animate={{ clipPath: "inset(0 0% 0 0)" }}
   transition={{
-    duration: 0.3,
+    duration: 0.5,
     
   }}
 >
