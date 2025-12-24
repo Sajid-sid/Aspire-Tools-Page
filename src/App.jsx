@@ -1,25 +1,27 @@
 import { motion } from "framer-motion";
 import word from "./assets/word2pdf.png";
 import Amazon from "./assets/Amazon1.png";
+import web from "./assets/app.png";
+import app from "./assets/app2.png";
 import "./App.css";
 
-/* Container stagger */
+/* ===== Container stagger ===== */
 const containerVariants = {
-  hidden: { opacity: 1 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
-      staggerChildren: 0.25, // cards fall one by one
+      staggerChildren: 0.2,
+      delayChildren: 0.4, // after heading
     },
   },
 };
 
-/* Falling down animation */
+/* ===== Card animation ===== */
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: -150,          // start from top
-    scale: 0.95,
+    y: 40,        // smoother than -150
+    scale: 0.96,
   },
   visible: {
     opacity: 1,
@@ -27,8 +29,8 @@ const cardVariants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 110,
-      damping: 14,     // bounce control
+      stiffness: 90,
+      damping: 16,
     },
   },
 };
@@ -39,45 +41,59 @@ function App() {
       name: "Word to PDF Converter",
       description:
         "Convert Word documents into high-quality PDFs while preserving formatting.",
+      feature:
+        "Fast, secure conversion with full layout and content preservation.",
       image: word,
-      link: "https://word-to-pdf-converter-ten.vercel.app/",
+      link: "https://wordtopdf.aspireths.com/",
     },
     {
       name: "Amazon Seller Profit Calculator",
       description:
         "Calculate Amazon fees, costs, profit, and margins before selling products.",
-      image: Amazon,
-      link: "https://wheat-goose-528320.hostingersite.com/",
-    },
-    {
-      name: "Amazon Seller Profit Calculator",
-      description:
-        "Calculate Amazon fees, costs, profit, and margins before selling products.",
+      feature:
+        "Accurate profit estimation with real-time fee calculations.",
       image: Amazon,
       link: "https://wheat-goose-528320.hostingersite.com/",
     },
     {
       name: "AI Writing Tools",
       description:
-        "AI Writing Tools help users generate high-quality content quickly using advanced artificial intelligence.",
-      image: null,     // 👈 no image
-      link: null,      // 👈 no link
+        "Generate high-quality content instantly using AI-powered writing tools.",
+      feature:
+        "Blogs, emails, ads, and SEO content in seconds.",
+      image: null,
+      link: null,
     },
+       {name:"App Cost Calculator",
+      description:(<>App Cost Calculator quickly estimates the development cost of mobile and web apps based on features and complexity.
+</>),feature:"Provides instant, accurate cost estimates for app development based on features, platform, and complexity.",
+image:app,
+link:"https://project-cost-calculator-olive.vercel.app/"},
+   {name:"Website Cost Calculator",
+      description:(<>Website Cost Calculator estimates the cost of building a website based on features, design, and platform.
+It helps businesses and developers plan budgets quickly with accurate, instant results.
+</>),feature:"Instantly calculates website development costs based on features, design complexity, and platform.",
+image:web,
+link:"https://website-calculator-gold.vercel.app/"}
   ];
 
   return (
     <>
-      {/* Animated Heading */}
-      <motion.p
-        className="heading"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Tools
-      </motion.p>
+      {/* ===== Heading ===== */}
+<motion.p
+  className="heading"
+  initial={{ clipPath: "inset(0 100% 0 0)" }}
+  animate={{ clipPath: "inset(0 0% 0 0)" }}
+  transition={{
+    duration: 0.5,
+    
+  }}
+>
+  Tools
+</motion.p>
 
-      {/* Cards */}
+
+      {/* ===== Cards ===== */}
       <motion.div
         className="head"
         variants={containerVariants}
@@ -89,11 +105,12 @@ function App() {
             key={index}
             className="card"
             variants={cardVariants}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => item.link && window.open(item.link, "_blank")}
+            style={{ cursor: item.link ? "pointer" : "default" }}
           >
-            {/* Image (only if exists) */}
+            {/* Image */}
             {item.image && (
               <div className="image-box">
                 <img src={item.image} alt={item.name} />
@@ -102,6 +119,14 @@ function App() {
 
             <p className="title">{item.name}</p>
             <p className="description">{item.description}</p>
+
+            {item.feature && (
+              <p className="feature">
+                <strong>Feature:</strong>
+                <br />
+                {item.feature}
+              </p>
+            )}
 
             <span className="glow"></span>
           </motion.div>
