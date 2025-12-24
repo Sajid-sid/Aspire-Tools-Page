@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import word from "./assets/word2pdf.png";
 import Amazon from "./assets/Amazon1.png";
-import web from "./assets/app.png";
+import web from "./assets/App.png";
 import app from "./assets/app2.png";
 import "./App.css";
 
