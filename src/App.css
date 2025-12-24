@@ -1,18 +1,32 @@
-/* *
-{
-  background-image: linear-gradient(to right,rgb(184, 211, 206),white,rgb(184, 211,206));} */
-/* ===== PAGE HEADING ===== */
-.heading {
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
-  color: blue;
-  margin-bottom: 40px;
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
 }
 
-/* ===== CARD CONTAINER ===== */
+body {
+  margin: 0;
+  background-color: #f1f1f1;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+/* ===== HEADING ===== */
+.heading {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #4770db;
+  padding: 50px 20px 30px;
+  margin: 0;
+  z-index: 100;
+}
+
+/* ===== CONTAINER ===== */
 .head {
+  margin-top: 160px; /* space for fixed header */
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
@@ -22,66 +36,61 @@
 
 /* ===== CARD ===== */
 .card {
-  width: 300px;
+  width: 500px;
+  min-height: 400px;
   padding: 20px;
   border-radius: 18px;
-  background-color:whitesmoke;
-  cursor: pointer;
+  background: #ffffff;
   position: relative;
   overflow: hidden;
-  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s ease;
-} */
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
 }
 
-/* ===== IMAGE WRAPPER (IMPORTANT) ===== */
+.card:hover {
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== IMAGE ===== */
 .image-box {
-  width: 100%;
-  height: 200px;                 /* fixed height for all cards */
+  height: 200px;
   background: #f4f6fb;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   margin-bottom: 16px;
 }
 
-/* ===== IMAGE ===== */
 .image-box img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;           /* no crop */
-  display: block;
-  transition: transform 0.3s ease;
+  object-fit: contain;
 }
 
-/* Hover zoom */
-.card:hover .image-box img {
-  transform: scale(1.05);
-}
-.card:hover
-{
-  box-shadow: #555;
-   transform: scale(1.05);
-}
-/* ===== TITLE ===== */
+/* ===== TEXT ===== */
 .title {
   font-size: 18px;
-  font-weight: bold;
-  color: blue;
+  font-weight: 600;
+  color: #1f3fbf;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
   margin-top: 10px;
 }
 
-/* ===== DESCRIPTION ===== */
 .description {
   font-size: 14px;
-  color: #555;
-  margin-top: 10px;
+  color: #333333;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+.feature {
+  font-size: 13px;
+  color: #555555;
+  text-align: center;
+  margin-top: 6px;
 }
 
 /* ===== GLOW EFFECT ===== */
@@ -89,14 +98,26 @@
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    
-    rgba(76, 168, 230, 0.5),
-    transparent 100%
+    rgba(71, 112, 219, 0.25),
+    transparent 70%
   );
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover .glow {
   opacity: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 1.5rem;
+    padding: 35px 10px 20px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 380px;
+  }
 }
