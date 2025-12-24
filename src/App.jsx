@@ -18,8 +18,8 @@ const containerVariants = {
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 40,        // smoother than -150
-    scale: 0.96,
+    y: 50,          // cards start slightly lower
+    scale: 0.95,
   },
   visible: {
     opacity: 1,
@@ -27,11 +27,13 @@ const cardVariants = {
     scale: 1,
     transition: {
       type: "spring",
-      stiffness: 90,
-      damping: 16,
+      stiffness: 120, // a little snappier
+      damping: 18,
+      mass: 0.8,      // subtle bounce effect
     },
   },
 };
+
 
 function App() {
   const tools = [
@@ -72,7 +74,7 @@ function App() {
   initial={{ clipPath: "inset(0 100% 0 0)" }}
   animate={{ clipPath: "inset(0 0% 0 0)" }}
   transition={{
-    duration: 0.5,
+    duration: 0.3,
     
   }}
 >
